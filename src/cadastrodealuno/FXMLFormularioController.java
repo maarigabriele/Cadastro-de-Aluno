@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javax.swing.JOptionPane;
 
 public class FXMLFormularioController implements Initializable 
@@ -29,8 +29,14 @@ public class FXMLFormularioController implements Initializable
     @FXML
     private TextField matriculaTextField;
     
+    @FXML 
+    private Button proximoBtn;
+    @FXML 
+    private Button anteriorBtn;
+   
     @FXML
     private TextArea imprimeTextArea;
+    ControllerArray array = new ControllerArray();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
@@ -53,5 +59,18 @@ public class FXMLFormularioController implements Initializable
                 sobrenomeTextField.getText()+"\n" + "E-mail: " + e_mailTextField.getText()+"\n" +
                         "Curso: " +cursoCombox.getSelectionModel().getSelectedItem().toString()+ "\n" + "Data de Nascimento: " + diaTextField.getText()
          + mesTextField.getText() + anoTextField.getText() + "\n" + "Número de Matrícula: " + matriculaTextField.getText() +"\n");
+    }
+    public void proximoBtn_Clicked(){
+        imprimeTextArea.setText(array.proximo());
+    }
+    public void anteriorBtn_Cliked(){
+        imprimeTextArea.setText(array.anterior());
+    }
+    public void excluirBtn_Cliked(){
+        if(array.deleteAluno()){
+            ////carrega informações do proximo aluno ou anterior
+        }else{
+            ///Menssagem lista vázia 
+        }
     }
 }

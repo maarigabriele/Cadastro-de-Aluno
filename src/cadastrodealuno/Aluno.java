@@ -1,11 +1,23 @@
 package cadastrodealuno;
 public class Aluno extends Pessoa
 {
-    public Aluno(String nome, String sobrenome, float nt1, float nt2, float nt3)
+    
+    private String matrícula;
+    /*
+    digite  o resto dos atributos e faça o encapsulamento
+    */
+    
+    ////deixa  o construto padrão 
+    public Aluno()
     {
         
     }
-    
+    public String getMatrícula(){
+         return matrícula;
+    }
+    public void setMatricula(String newMatrícula){
+         matrícula  = newMatrícula;
+    }
 }
     
  
