@@ -22,7 +22,8 @@ public class CadastroDeAluno extends Application
     }   
    
     public static void main(String[] args) 
-    {
+    { 
+        ///comentario teste
         launch();
     }
 }
