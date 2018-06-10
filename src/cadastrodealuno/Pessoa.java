@@ -1,65 +1,61 @@
-package cadastrodealuno;
+package CadastroDeAluno;
+
+import java.util.Calendar;
 
 public class Pessoa 
 {
-    private String Nome;
-    private String Sobrenome;
-    private String Email;
-    private int Dia, Mes, Ano;
-    
-    @Override
-    public String toString()
-    {
-        return Nome + " " + Sobrenome;
-    }
-    public void Pessoa(String Nome,String Sobrenome)
-    {
-        this.Nome = Nome;
-        this.Sobrenome = Sobrenome;
-    }
-    public String getNome() {
-        return Nome;
-    }
-    public void setNome(String Nome) {
-        this.Nome = Nome;
-    }
-    public String getSobrenome() {
-        return Sobrenome;
-    }
-    public void setSobrenome(String Sobrenome) {
-        this.Sobrenome = Sobrenome;
-    }
-    public String getEmail() {
-        return Email;
-    }
-    public void setEmail(String Email) {
-        this.Email = Email;
-    }
-    public int getDia() {
-        return Dia;
-    }
-    public void setDia(int Dia) {
-        this.Dia = Dia;
-    }
-    public int getMes() {
-        return Mes;
-    }
-    public void setMes(int Mes) {
-        this.Mes = Mes;
-    }
-    public int getAno() {
-        return Ano;
-    }
-    public void setAno(int Ano) {
-        this.Ano = Ano;
-    }
-    public int Idade()
-    {
-        return 1;
-    }
-    public int DataNascimento()
-    {
-        return 0;
-    }    
-}
+    protected String nome;
+    protected String sobrenome;
+    protected String email;
+    protected Converter data_digitada;
 
+    public String NomeCompleto() 
+    {
+        return nome + " " + sobrenome;
+    }
+    public int CalculoIdade()
+    {
+        int idade;
+        Calendar c = Calendar.getInstance();
+        if (c.get(Calendar.MONTH) + 1 < data_digitada.mes) 
+        {
+            idade = c.get(Calendar.YEAR) - 1 - data_digitada.ano;
+        } 
+        else if (c.get(Calendar.MONTH) + 1 == data_digitada.mes) 
+        {
+            if (Calendar.DAY_OF_MONTH < data_digitada.dia)
+            {
+                idade = c.get(Calendar.YEAR) - 1 - data_digitada.ano;
+            }
+            else 
+            {
+                idade = c.get(Calendar.YEAR) - data_digitada.ano;
+            }
+        }
+        else 
+        {
+            idade = c.get(Calendar.YEAR) - data_digitada.ano;
+        }
+        return idade;
+    }
+    public String getDataDeNascimento() 
+    {
+        return data_digitada.toString();
+    }
+    public class Converter
+    {
+        public int dia;
+        public int mes;
+        public int ano;
+
+        @Override
+        public String toString() 
+        {
+            return dia + "/" + mes + "/" + ano;
+        }
+    }
+    public String Email()
+    {
+        return email;
+    }
+}
