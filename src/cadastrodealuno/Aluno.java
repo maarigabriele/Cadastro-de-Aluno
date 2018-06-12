@@ -1,15 +1,15 @@
-package CadastroDeAluno;
-
+package cadastrodealuno;
 public class Aluno extends Pessoa // Criando método ALUNO que herdará atributos da classe PESSOA //
 {
-    public String curso;
-    public String matricula;
-    public float n1;
-    public float n2;
-    public float n3;
+    private String curso;
+    private String matricula;
+    private float n1;
+    private float n2;
+    private float n3;
     
     public Aluno(String curso, float n1, float n2, float n3)
     {
+        data_digitada = new Idade();
         this.curso = curso;
         this.n1 = n1;
         this.n2 = n2;
@@ -85,15 +85,15 @@ public class Aluno extends Pessoa // Criando método ALUNO que herdará atributo
     @Override
     public String toString() {
         return
-                "Nome Completo: " + super.NomeCompleto() + "\n"
+                "Nome Completo: " + NomeCompleto() + "\n"
                 + "E-mail: " + Email() + "\n"
                 + "Idade: " + CalculoIdade() + "\n"
                 + "Data De Nascimento: " + getDataDeNascimento() + "\n"
                 + "Curso: " + curso + "\n"
-                + "Matrícula: " + matricula + "\n"
+                + "Número de Matrícula: " + matricula + "\n"
                 + "Notas: " + n1 + "," + n2 + "," + n3 + "\n"
-                + "Média:" + getMedia() + "\n"
-                + "Situação:" + getSituacaoAluno();
+                + "Média: " + getMedia() + "\n"
+                + "Situação: " + getSituacaoAluno();
     }
 }
     

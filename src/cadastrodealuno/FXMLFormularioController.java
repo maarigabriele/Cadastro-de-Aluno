@@ -29,10 +29,23 @@ public class FXMLFormularioController implements Initializable
     @FXML
     private TextField matriculaTextField;
     
+    @FXML
+    private TextField nota1TextField;
+    
     @FXML 
-    private Button proximoBtn;
+    private TextField nota2TextField;
+    
     @FXML 
-    private Button anteriorBtn;
+    private TextField nota3TextField;
+    
+    @FXML 
+    private Button ProximoButton;
+    
+    @FXML 
+    private Button ButtonAnterior;
+    
+    @FXML
+    private Button ButtonExcluir;
    
     @FXML
     private TextArea imprimeTextArea;
@@ -46,31 +59,33 @@ public class FXMLFormularioController implements Initializable
         "Finanças","Medicina","Ciências Econômicas",
         "Música","Odontologia","Psicologia");
        cursoCombox.getSelectionModel().selectFirst();
-    }
-     
+    } 
     public  void cadastrarButtonClicked()
+    {   
+        Aluno novo = new Aluno(cursoCombox.getSelectionModel().getSelectedItem().toString(),Float.parseFloat(nota1TextField.getText()),Float.parseFloat(nota2TextField.getText()),Float.parseFloat(nota3TextField.getText()));
+        novo.setNome(nomeTextField.getText());
+        novo.setSobrenome(sobrenomeTextField.getText());
+        novo.setEmail(e_mailTextField.getText());
+        novo.setMatricula(matriculaTextField.getText());
+        novo.data_digitada.ano = Integer.parseInt(anoTextField.getText());
+        novo.data_digitada.mes = Integer.parseInt(mesTextField.getText());
+        novo.data_digitada.dia = Integer.parseInt(diaTextField.getText());
+        
+        array.getAlunos().add(novo);
+        
+        imprimeTextArea.setText(array.UltimoCadastrado());
+}
+    public void ProximoButton_Clicked()
     {
-         JOptionPane.showMessageDialog(null, "Nome: " + nomeTextField.getText()+"\n" + "Sobrenome: " +
-                sobrenomeTextField.getText()+"\n" + "E-mail: " + e_mailTextField.getText()+"\n" +
-                        "Curso: " +cursoCombox.getSelectionModel().getSelectedItem().toString()+ "\n" + "Data de Nascimento: " + diaTextField.getText()
-         + mesTextField.getText() + anoTextField.getText() + "\n" + "Número de Matrícula: " + matriculaTextField.getText() +"\n"
-     );
-         imprimeTextArea.setText("Nome: " + nomeTextField.getText()+"\n" + "Sobrenome: " +
-                sobrenomeTextField.getText()+"\n" + "E-mail: " + e_mailTextField.getText()+"\n" +
-                        "Curso: " +cursoCombox.getSelectionModel().getSelectedItem().toString()+ "\n" + "Data de Nascimento: " + diaTextField.getText()
-         + mesTextField.getText() + anoTextField.getText() + "\n" + "Número de Matrícula: " + matriculaTextField.getText() +"\n");
+        imprimeTextArea.setText(array.ProximoAluno());
     }
-    public void proximoBtn_Clicked(){
-        imprimeTextArea.setText(array.proximo());
+    public void ButtonAnterior_Cliked()
+    {
+        imprimeTextArea.setText(array.AlunoAnterior());
     }
-    public void anteriorBtn_Cliked(){
-        imprimeTextArea.setText(array.anterior());
-    }
-    public void excluirBtn_Cliked(){
-        if(array.deleteAluno()){
-            ////carrega informações do proximo aluno ou anterior
-        }else{
-            ///Menssagem lista vázia 
-        }
+    public void ButtonExcluir_Cliked()
+    {
+        array.DeletarAluno();
+        imprimeTextArea.setText("Cadastro Excluído");
     }
 }

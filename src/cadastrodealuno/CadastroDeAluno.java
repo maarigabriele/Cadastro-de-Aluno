@@ -13,9 +13,7 @@ public class CadastroDeAluno extends Application
     @Override
     public void start(Stage primaryStage) throws IOException
     {
-     AnchorPane root = FXMLLoader.load( 
-     this.getClass().getResource("FXMLFormulario.fxml")
-     ); 
+     AnchorPane root = FXMLLoader.load(this.getClass().getResource("FXMLFormulario.fxml"));
      Scene scene = new Scene(root); 
      primaryStage.setScene(scene);
      primaryStage.show();
@@ -23,7 +21,6 @@ public class CadastroDeAluno extends Application
    
     public static void main(String[] args) 
     { 
-        ///comentario teste
-        launch();
+        launch(args);
     }
 }
