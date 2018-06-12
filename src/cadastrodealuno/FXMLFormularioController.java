@@ -61,7 +61,7 @@ public class FXMLFormularioController implements Initializable
        cursoCombox.getSelectionModel().selectFirst();
     } 
     public  void cadastrarButtonClicked()
-    {   
+    {  
         Aluno novo = new Aluno(cursoCombox.getSelectionModel().getSelectedItem().toString(),Float.parseFloat(nota1TextField.getText()),Float.parseFloat(nota2TextField.getText()),Float.parseFloat(nota3TextField.getText()));
         novo.setNome(nomeTextField.getText());
         novo.setSobrenome(sobrenomeTextField.getText());
@@ -70,6 +70,27 @@ public class FXMLFormularioController implements Initializable
         novo.data_digitada.ano = Integer.parseInt(anoTextField.getText());
         novo.data_digitada.mes = Integer.parseInt(mesTextField.getText());
         novo.data_digitada.dia = Integer.parseInt(diaTextField.getText());
+        
+        if(nomeTextField.getText().equals(" ") ? true:
+           sobrenomeTextField.getText().equals(" ") ? true:
+           e_mailTextField.getText().equals(" ") ? true:
+           anoTextField.getText().equals(" ") ? true:
+           mesTextField.getText().equals(" ") ? true:
+           diaTextField.getText().equals(" ") ? true:
+           cursoCombox.getSelectionModel().getSelectedItem() == null ? true:
+           matriculaTextField.getText().equals(" ") ? true:
+           nota1TextField.getText().equals(" ") ? true:
+           nota2TextField.getText().equals(" ") ? true:
+           nota3TextField.getText().equals(" "))
+        {
+            Alert alerta = new Alert (Alert.AlertType.ERROR);
+            alerta.setTitle("Erro nas informações cadastradas");
+            alerta.setHeaderText("Preencha todos os campos corretamente!");
+            alerta.setContentText("Preencha todos os campos vazios");
+            
+            alerta.showAndWait();
+            return;
+        }
         
         array.getAlunos().add(novo);
         
